@@ -6,12 +6,12 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:36:45 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/27 18:53:43 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/30 10:51:19 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
-# define AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
 #include <iostream>

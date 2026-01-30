@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:28:55 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/28 18:12:13 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/29 12:05:07 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	if (!getSigned())
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (executor.getGrade() > getGradeExec())
-		throw AForm::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	requestRobotomy();
 }

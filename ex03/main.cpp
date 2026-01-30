@@ -6,85 +6,84 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 12:36:08 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/28 19:37:02 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/29 13:55:03 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main() {
-	std::srand(std::time(0));
+    std::srand(std::time(0));
+    Intern intern;
     Bureaucrat alice("Alice", 1);
     Bureaucrat bob("Bob", 50);
     Bureaucrat charlie("Charlie", 146);
-	Bureaucrat david("David", 1);
 
-    ShrubberyCreationForm shrub("home");
-    RobotomyRequestForm robot("Robotomy Request");
-    PresidentialPardonForm pardon("Gab");
-
-    // Shrubbery
-         std::cout << "\n=== Test 1: ShrubberyCreationForm - Not signed ===\n";
-    try {
-        alice.executeForm(shrub);
-    } 
-	catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
-	
-		std::cout << "\n=== Test 2: ShrubberyCreationForm - Signed ===\n";
-    try {
-        alice.signForm(shrub);
-        alice.executeForm(shrub);
-    } 
-	catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
+    // Test ShrubberyCreationForm
+    std::cout << "\n=== Test: ShrubberyCreationForm via Intern ===\n";
+    AForm* shrub = intern.makeForm("shrubbery creation", "Ana");
+    if (shrub) {
+        try {
+            alice.signForm(*shrub);
+            alice.executeForm(*shrub);
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        delete shrub;
     }
 
-    // Robotomy
-	        std::cout << "\n=== Test 3: RobotomyRequestForm  - Not signed ===\n";
-    try {
-        bob.executeForm(robot); 
-    } 
-	catch (std::exception &e) {
-    	std::cout << e.what() << std::endl;
-    }
-	
-        std::cout << "\n=== Test 4: RobotomyRequestForm - Signed ===\n";
-    try {
-		bob.signForm(robot);
-        bob.executeForm(robot);
-		david.executeForm(robot);
-    } 
-	catch (std::exception &e) {
-    	std::cout << e.what() << std::endl;
+    // Test RobotomyRequestForm
+    std::cout << "\n=== Test: RobotomyRequestForm via Intern ===\n";
+    AForm* robot = intern.makeForm("robotomy request", "Tania");
+    if (robot) {
+        try {
+            bob.signForm(*robot);
+            bob.executeForm(*robot);
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        delete robot;
     }
 
-    // Presidential Pardon
-        std::cout << "\n=== Test 5: PresidentialPardonForm ===\n";
-    try {
-    	alice.signForm(pardon);
-        alice.executeForm(pardon);
-    } 
-	catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
+    // Test PresidentialPardonForm
+    std::cout << "\n=== Test: PresidentialPardonForm via Intern ===\n";
+    AForm* pardon = intern.makeForm("presidential pardon", "Gab");
+    if (pardon) {
+        try {
+            alice.signForm(*pardon);
+            alice.executeForm(*pardon);
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        delete pardon;
     }
 
-    // Test grade too low
-        std::cout << "\n=== Test 6: Grade Too Low Test ===\n";
-    try {
-        charlie.signForm(shrub);
-        charlie.executeForm(shrub);
-    } 
-	catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
+    // Test with an invalid form name
+    std::cout << "\n=== Test: Invalid Form via Intern ===\n";
+    AForm* invalid = intern.makeForm("invalid form", "Nobody");
+    if (invalid) delete invalid;
+
+    // Test grade too low for signing/executing
+    std::cout << "\n=== Test: Grade Too Low ===\n";
+    AForm* shrub2 = intern.makeForm("shrubbery creation", "Kei");
+    if (shrub2) {
+        try {
+            charlie.signForm(*shrub2);
+            charlie.executeForm(*shrub2);
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        delete shrub2;
     }
 
     return 0;
 }
+

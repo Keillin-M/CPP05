@@ -6,16 +6,16 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:14:02 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/27 17:31:28 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/30 10:52:10 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <string>
-# include <iostream>
-# include <exception>
+#include <string>
+#include <iostream>
+#include <exception>
 
 class AForm;
 

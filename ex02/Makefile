@@ -32,6 +32,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f home_shrubbery
 
 re: fclean all
 

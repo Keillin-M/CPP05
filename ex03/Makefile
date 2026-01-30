@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = ex03
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I include
@@ -11,7 +11,8 @@ SRCS = main.cpp \
 	$(SRC_DIR)/AForm.cpp \
 	$(SRC_DIR)/ShrubberyCreationForm.cpp \
 	$(SRC_DIR)/RobotomyRequestForm.cpp \
-	$(SRC_DIR)/PresidentialPardonForm.cpp
+	$(SRC_DIR)/PresidentialPardonForm.cpp \
+	$(SRC_DIR)/Intern.cpp \
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
@@ -32,6 +33,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f Ana_shrubbery
 
 re: fclean all
 

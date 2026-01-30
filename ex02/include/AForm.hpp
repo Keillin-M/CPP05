@@ -6,12 +6,12 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:36:45 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/27 18:53:43 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/30 10:52:01 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
-# define AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
 #include <iostream>
@@ -27,14 +27,6 @@ class AForm {
 		int const grade_exec;
 	public:
 		// Exception classes
-		class GradeTooHighException : public std::exception {
-			public:
-				const char* what() const throw();
-		};
-		class GradeTooLowException : public std::exception {
-			public:
-				const char* what() const throw();
-		};
 		class FormNotSignedException : public std::exception {
 			public:
 				const char* what() const throw();

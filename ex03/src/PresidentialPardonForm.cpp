@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:29:02 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/28 18:13:23 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/29 13:51:03 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	if (!getSigned())
 		throw AForm::FormNotSignedException();
 	if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (executor.getGrade() > getGradeExec())
-		throw AForm::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	pardon();
 }

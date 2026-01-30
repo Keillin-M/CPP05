@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:36:54 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/26 19:51:23 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/01/29 12:07:20 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,13 @@
 #include "../include/Form.hpp"
 #include "../include/Bureaucrat.hpp"
 
-// Exceptions
-const char* Form::GradeTooHighException::what() const throw() {
-	return "Grade is too high";
-}
-
-const char* Form::GradeTooLowException::what() const throw() {
-	return "Grade is too low";	
-}
-	
 // Constructors and destructors
 Form::Form(std::string const &name, int grade_sign, int grade_exec) : name(name), sign(false), 
 	grade_sign(grade_sign), grade_exec(grade_exec) {
 	if (grade_sign < 1 || grade_exec < 1)
-		throw Form::GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (grade_sign > 150 || grade_exec > 150)
-		throw Form::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Form::Form(const Form& other) : name(other.name), sign(other.sign), grade_sign(other.grade_sign), grade_exec(other.grade_exec) {}
@@ -62,7 +53,7 @@ bool Form::getSigned() const {
 
 void Form::beSigned(const Bureaucrat& bureaucrat){
 	if (bureaucrat.getGrade() > grade_sign)
-		throw Form::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	sign = true;
 }
 
