@@ -6,22 +6,20 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:20:04 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/30 16:13:28 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:32:07 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
 #include "../include/Bureaucrat.hpp"
 #include "../include/Form.hpp"
 
 // Exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is too high";
+	return "grade is too high";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is too low";	
+	return "grade is too low";	
 }
 
 // Constructors and destructors

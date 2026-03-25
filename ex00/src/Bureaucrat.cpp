@@ -6,29 +6,27 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 17:20:04 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/26 19:15:52 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:32:21 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
 #include "../include/Bureaucrat.hpp"
 
 // Exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is too high";
+	return "grade is too high";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is too low";	
+	return "grade is too low";	
 }
 
 // Constructors and destructors
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : name(name), grade(grade) {
 	if (grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.grade) {}

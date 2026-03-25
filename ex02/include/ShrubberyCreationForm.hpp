@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:28:04 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/30 10:52:26 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:12:14 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include <string>
+#include <iostream>
+#include <fstream>
 #include "AForm.hpp"
 
 class AForm;

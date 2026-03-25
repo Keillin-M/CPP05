@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:28:22 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/30 10:52:21 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:12:41 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include "AForm.hpp"
 
 class AForm;

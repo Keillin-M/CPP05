@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:36:45 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/30 10:51:19 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 16:41:18 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ class AForm {
 			public:
 				const char* what() const throw();
 		};
+		
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw();
 		};
+
 		class FormNotSignedException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+		
+			class FormAlreadySignedException : public std::exception {
 			public:
 				const char* what() const throw();
 		};

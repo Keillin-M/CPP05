@@ -6,13 +6,10 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:29:02 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/29 12:05:13 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:16:09 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <fstream>
 #include "../include/PresidentialPardonForm.hpp"
 #include "../include/AForm.hpp"
 #include "../include/Bureaucrat.hpp"
@@ -41,10 +38,10 @@ void PresidentialPardonForm::pardon() const {
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	if (!getSigned())
-		throw AForm::FormNotSignedException();
+		throw FormNotSignedException();
 	if (executor.getGrade() < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	if (executor.getGrade() > getGradeExec())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	pardon();
 }

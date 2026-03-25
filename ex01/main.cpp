@@ -6,7 +6,7 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:29:59 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/26 19:56:19 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 12:12:55 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int main() {
 	std::cout << std::endl << "=== Test 10: Getters ===" << std::endl;
 	try {
 		Bureaucrat dave("Dave", 75);
+		std::cout << dave << std::endl;
 		std::cout << "Name: " << dave.getName() << std::endl;
 		std::cout << "Grade: " << dave.getGrade() << std::endl;
 	}
@@ -140,6 +141,7 @@ int main() {
 	std::cout << std::endl << "=== Test 12: Form signing success ===" << std::endl;
 	try {
 		Bureaucrat bob("Bob", 50);
+		std::cout << bob << std::endl;
 		Form f2("Permit", 100, 50);
 		std::cout << f2 << std::endl;
 		bob.signForm(f2); // Should succeed
@@ -151,19 +153,23 @@ int main() {
 	std::cout << std::endl << "=== Test 13: Form signing failure ===" << std::endl;
 	try {
 		Bureaucrat intern("Intern", 150);
+		std::cout << intern << std::endl;
 		Form secret("TopSecret", 1, 1);
+		std::cout << "Before: \n" << secret << std::endl;
 		intern.signForm(secret); // Should fail
-		std::cout << secret << std::endl;
+		std::cout << "After: \n" << secret << std::endl;
 	} catch (std::exception& e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
 		std::cout << std::endl << "=== Test 14: Form signing even if execute is lower ===" << std::endl;
 	try {
-		Bureaucrat intern("Analyst", 50);
-		Form secret("Papers", 50, 20);
-		intern.signForm(secret); // Should fail
-		std::cout << secret << std::endl;
+		Bureaucrat analyst("Analyst", 50);
+		std::cout << analyst << std::endl;
+		Form papers("Papers", 50, 20);
+		std::cout << "Before: \n" << papers << std::endl;
+		analyst.signForm(papers); // Should work
+		std::cout << "After: \n" << papers << std::endl;
 	} catch (std::exception& e) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}

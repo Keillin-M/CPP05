@@ -6,14 +6,10 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 19:43:21 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/29 13:50:31 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:26:12 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
 #include "../include/Intern.hpp"
 #include "../include/AForm.hpp"
 #include "../include/Bureaucrat.hpp"
@@ -24,7 +20,7 @@
 // Constructors and destructors
 Intern::Intern() {}
 
-Intern::Intern(const Intern& other) {(void)other;}
+Intern::Intern(const Intern& other) { (void)other; }
 
 Intern& Intern::operator=(const Intern &other) {
 	(void)other;

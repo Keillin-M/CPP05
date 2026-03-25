@@ -6,13 +6,11 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 12:36:08 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/28 19:37:02 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 15:59:43 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <ctime>
-#include <cstdlib>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -20,17 +18,28 @@
 
 int main() {
 	std::srand(std::time(0));
-    Bureaucrat alice("Alice", 1);
-    Bureaucrat bob("Bob", 50);
-    Bureaucrat charlie("Charlie", 146);
-	Bureaucrat david("David", 1);
+    
+    std::cout << "\n=== Creation of Bureaucrats ===\n";
 
+    Bureaucrat alice("Alice", 1);
+    std::cout << alice << std::endl;
+    Bureaucrat bob("Bob", 50);
+    std::cout << bob << std::endl;
+    Bureaucrat charlie("Charlie", 146);
+    std::cout << charlie << std::endl;
+	Bureaucrat david("David", 45);
+    std::cout << david << std::endl;
+    
+    std::cout << "\n=== Creation of Forms ===\n";
     ShrubberyCreationForm shrub("home");
+    std::cout << shrub << std::endl;
     RobotomyRequestForm robot("Robotomy Request");
+    std::cout << robot << std::endl;
     PresidentialPardonForm pardon("Gab");
+    std::cout << pardon << std::endl;
 
     // Shrubbery
-         std::cout << "\n=== Test 1: ShrubberyCreationForm - Not signed ===\n";
+    std::cout << "\n=== Test 1: ShrubberyCreationForm - Not signed ===\n";
     try {
         alice.executeForm(shrub);
     } 
@@ -38,7 +47,7 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 	
-		std::cout << "\n=== Test 2: ShrubberyCreationForm - Signed ===\n";
+	std::cout << "\n=== Test 2: ShrubberyCreationForm - Signed ===\n";
     try {
         alice.signForm(shrub);
         alice.executeForm(shrub);
@@ -48,7 +57,7 @@ int main() {
     }
 
     // Robotomy
-	        std::cout << "\n=== Test 3: RobotomyRequestForm  - Not signed ===\n";
+	std::cout << "\n=== Test 3: RobotomyRequestForm  - Not signed ===\n";
     try {
         bob.executeForm(robot); 
     } 
@@ -56,7 +65,7 @@ int main() {
     	std::cout << e.what() << std::endl;
     }
 	
-        std::cout << "\n=== Test 4: RobotomyRequestForm - Signed ===\n";
+    std::cout << "\n=== Test 4: RobotomyRequestForm - Signed ===\n";
     try {
 		bob.signForm(robot);
         bob.executeForm(robot);
@@ -67,9 +76,11 @@ int main() {
     }
 
     // Presidential Pardon
-        std::cout << "\n=== Test 5: PresidentialPardonForm ===\n";
+    std::cout << "\n=== Test 5: PresidentialPardonForm ===\n";
     try {
+        bob.executeForm(pardon);
     	alice.signForm(pardon);
+        bob.executeForm(pardon);
         alice.executeForm(pardon);
     } 
 	catch (std::exception &e) {
@@ -77,9 +88,13 @@ int main() {
     }
 
     // Test grade too low
-        std::cout << "\n=== Test 6: Grade Too Low Test ===\n";
+        std::cout << "\n=== Test 6: Form already signed and Grade Too Low Test ===\n";
     try {
         charlie.signForm(shrub);
+        
+        ShrubberyCreationForm shrub1("home1");
+        std::cout << shrub1 << std::endl;
+        charlie.signForm(shrub1);
         charlie.executeForm(shrub);
     } 
 	catch (std::exception &e) {

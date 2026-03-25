@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <fstream>
 #include "../include/ShrubberyCreationForm.hpp"
 #include "../include/AForm.hpp"
 #include "../include/Bureaucrat.hpp"
@@ -53,10 +50,10 @@ void ShrubberyCreationForm::createShrubbery() const {
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	if (!getSigned())
-		throw AForm::FormNotSignedException();
+		throw FormNotSignedException();
 	if (executor.getGrade() < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	if (executor.getGrade() > getGradeExec())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	createShrubbery();
 }

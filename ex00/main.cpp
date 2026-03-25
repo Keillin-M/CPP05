@@ -6,11 +6,10 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 18:29:59 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/26 18:33:21 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 11:32:18 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "include/Bureaucrat.hpp"
 
 int main() {
@@ -120,6 +119,7 @@ int main() {
 	std::cout << std::endl << "=== Test 10: Getters ===" << std::endl;
 	try {
 		Bureaucrat dave("Dave", 75);
+		std::cout << dave << std::endl;
 		std::cout << "Name: " << dave.getName() << std::endl;
 		std::cout << "Grade: " << dave.getGrade() << std::endl;
 	}

@@ -6,14 +6,10 @@
 /*   By: kmaeda <kmaeda@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 14:28:55 by kmaeda            #+#    #+#             */
-/*   Updated: 2026/01/29 13:51:06 by kmaeda           ###   ########.fr       */
+/*   Updated: 2026/03/25 17:29:32 by kmaeda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
 #include "../include/RobotomyRequestForm.hpp"
 #include "../include/AForm.hpp"
 #include "../include/Bureaucrat.hpp"
@@ -46,10 +42,10 @@ void RobotomyRequestForm::requestRobotomy() const {
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	if (!getSigned())
-		throw AForm::FormNotSignedException();
+		throw FormNotSignedException();
 	if (executor.getGrade() < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	if (executor.getGrade() > getGradeExec())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	requestRobotomy();
 }
